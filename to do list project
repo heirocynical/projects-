@@ -1,0 +1,74 @@
+# a to do app
+import calendar
+import tkinter as TK 
+from tkinter import *
+import datetime
+
+
+window = Tk()
+
+window.title("To Do list")
+
+window.geometry("400x310")
+
+#window.configure(bg = "White")
+
+
+
+def open_calandar():
+
+    calandar = Toplevel(window)
+
+    calandar.title("Calandar and Dates")
+
+    calandar.geometry("500x500")
+
+    result = calendar.calendar(2024)
+    display = Label(calandar,padx= 20,pady = 20)
+    display.pack()
+    display.config(text= result)
+
+    
+calandar = Button(window, text ="Open Calandar", command = open_calandar)
+calandar.pack()
+
+
+# check boxes
+
+t = Label(window,text= "To Do List", font= "50")
+t.pack()
+
+Checkbutton1 = IntVar()
+Checkbutton2 = IntVar()
+Checkbutton3 = IntVar()
+
+Checkbox1 = Checkbutton(window,text="Read",variable= Checkbutton1,onvalue=1,offvalue=0,height = 2,width = 10)
+Checkbox2 = Checkbutton(window,text="Code",variable= Checkbutton2,onvalue=1,offvalue=0,height = 2,width = 10)
+Checkbox3 = Checkbutton(window,text="Study",variable= Checkbutton3,onvalue=1,offvalue=0,height = 2,width = 10)
+
+Checkbox1.pack()
+Checkbox2.pack()
+Checkbox3.pack()
+
+
+# Add task 
+name_var = StringVar()
+def new_task():
+    result = IntVar()
+    new_task1 = Checkbutton(window,text=entry(),variable=result,onvalue=1,offvalue=0)
+    new_task1.pack()
+
+def entry():
+    text = Entry(window)
+    print(text)
+   
+
+new_task_button = Button(window,text=" New Task",command= new_task)
+new_task_button.pack()
+
+
+
+
+
+
+window.mainloop()
